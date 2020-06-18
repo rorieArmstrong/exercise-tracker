@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import UIfx from 'uifx';
+// import tickAudio from '../sounds/tick.mp3';
+import finishAudio from '../sounds/end.mp3';
+
+// const tick = new UIfx({asset: tickAudio});
+const finish = new UIfx({asset: finishAudio});
 
 class Timer extends Component {
     constructor(props) {
@@ -12,7 +18,6 @@ class Timer extends Component {
             paused: false
         }
     }
-    
 
     startTimer = async () => {
         this.setState({timing: true})
@@ -21,11 +26,13 @@ class Timer extends Component {
         while(this.state.currentRep < this.state.repetions) {
             this.timer = setInterval(() => {
                 this.setState({currentTime: this.state.currentTime-1})
+                // tick.play()
                 if(this.state.currentTime == 0){
                     this.setState({
                         currentRep: this.state.currentRep+1,
                         currentTime: this.state.length
                     })
+                    finish.play()
                 }
             }, 1000)
         }
@@ -48,7 +55,8 @@ class Timer extends Component {
     resetTimer = () => {
         this.setState({
             currentRep: 0,
-            currentTime: this.state.length
+            currentTime: this.state.length,
+            timing: false
         })
         console.log("reset")
     }
@@ -57,10 +65,11 @@ class Timer extends Component {
         return (
             <div className="timer">
                 <h3>timer: {this.state.time}</h3>
-                <button onClick={()=>{this.startTimer}} disabled={this.state.timing}>Start</button>
-                <button onClick={()=>{this.pauseTimer}} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
+                {this.state.timing?
+                    <button onClick={()=>{this.startTimer}} disabled={this.state.timing}>Start</button>:
+                    <button onClick={()=>{this.pauseTimer}} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
+                }
                 <button onClick={()=>{this.startTimer}} disabled={!this.state.timing}>Stop</button>
-                <button>reset</button>
             </div>
         );
     }
