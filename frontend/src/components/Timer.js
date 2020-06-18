@@ -11,7 +11,7 @@ class Timer extends Component {
         super(props);
         this.state = {
             length: this.props.length,
-            repetions: this.props.repetions,
+            repetitions: this.props.repetitions,
             currentTime: this.props.length,
             currentRep: 0,
             timing: false,
@@ -23,7 +23,7 @@ class Timer extends Component {
         this.setState({timing: true})
         console.log("start")
 
-        while(this.state.currentRep < this.state.repetions) {
+        while(this.state.currentRep < this.state.repetitions) {
             this.timer = setInterval(() => {
                 this.setState({currentTime: this.state.currentTime-1})
                 // tick.play()
