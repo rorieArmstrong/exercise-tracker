@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-class Workouts extends Component {
-    /* A page to see workout history displayed in a table */
+class Create extends Component {
     render() {
         return (
             <div>
@@ -11,4 +10,4 @@ class Workouts extends Component {
     }
 }
 
-export default Workouts;
+export default Create;
