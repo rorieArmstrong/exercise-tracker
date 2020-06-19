@@ -27,7 +27,7 @@ class Timer extends Component {
             this.timer = setInterval(() => {
                 this.setState({currentTime: this.state.currentTime-1})
                 // tick.play()
-                if(this.state.currentTime == 0){
+                if(this.state.currentTime === 0){
                     this.setState({
                         currentRep: this.state.currentRep+1,
                         currentTime: this.state.length
@@ -66,10 +66,10 @@ class Timer extends Component {
             <div className="timer">
                 <h3>timer: {this.state.time}</h3>
                 {this.state.timing?
-                    <button onClick={()=>{this.startTimer}} disabled={this.state.timing}>Start</button>:
-                    <button onClick={()=>{this.pauseTimer}} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
+                    <button onClick={() => {return this.startTimer}} disabled={this.state.timing}>Start</button>:
+                    <button onClick={() => {return this.pauseTimer}} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
                 }
-                <button onClick={()=>{this.startTimer}} disabled={!this.state.timing}>Stop</button>
+                <button onClick={()=>{return this.startTimer}} disabled={!this.state.timing}>Stop</button>
             </div>
         );
     }

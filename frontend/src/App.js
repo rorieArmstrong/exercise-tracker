@@ -1,9 +1,7 @@
-import React from 'react';
-import './App.css';
+import './styles/App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
 import Homepage from './pages/Homepage'
-import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import React, { Component } from 'react';
@@ -24,17 +22,17 @@ class App extends Component {
 		if(this.state.loggedIn){
 			return (
 				<div>
-					<Navbar loggedIn={true}/>
+					<Navbar/>
 					<Router>
 						<Switch>
-							<Route path='/' exact render={(props) => {
+							<Route path='/' exact render={props => (
 								<Homepage {...props}
 									userID={this.state.userID}
-								/>}} />
-							<Route path='/' exact render={(props) => {
+								/>)} />
+							<Route path='/timer'  render={props => (
 								<IntervalTimer {...props}
 									userID={this.state.userID}
-								/>}} />
+								/>)} />
 							<Route/>
 						</Switch>
 					</Router>

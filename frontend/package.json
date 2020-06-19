@@ -11,9 +11,11 @@
     "react": "^16.13.1",
     "react-browser-router": "^2.1.2",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-validation": "^3.0.7",
     "ufix": "^1.2.2",
+    "uifx": "^2.0.7",
     "validator": "^13.1.1"
   },
   "scripts": {
