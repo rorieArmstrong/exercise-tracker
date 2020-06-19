@@ -24,10 +24,10 @@ class IntervalTimer extends Component {
         return (
             <div>
                 <form>
-                    <input type="text" pattern="[0-9]*" onInput={this.handleChangeTime.bind(this)} value={this.state.length} />
-                    <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.repetitions} />
+                    <input type="text" pattern="[0-9]*" onChange={this.handleChangeTime.bind(this)} value={this.state.length} />
+                    <input type="text" pattern="[0-9]*" onChange={this.handleChangeReps.bind(this)} value={this.state.repetitions} />
                 </form>
-                <Timer length={this.state.length} repetitions={this.state.repetitions}/>
+                <Timer length={Number(this.state.length)} repetitions={Number(this.state.repetitions)}/>
             </div>
         );
     }
