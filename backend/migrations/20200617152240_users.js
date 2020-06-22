@@ -5,7 +5,7 @@ exports.up = function(knex) {
         tbl.string('username').notNullable().unique();
         tbl.string('crypt_password').notNullable().unique();
         tbl.sting('salt');
-        tbl.string('email');
+        tbl.string('email').unique();
         tbl.string('first_name');
         tbl.string('surname');
         tbl.timestamp('created').notNullable().defaultTo(knex.fn.now());
