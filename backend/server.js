@@ -1,52 +1,60 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const port = 8080;
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const app = express();
-const users = require('./routes/users')
-const sqlite3 = require('sqlite3').verbose();
-const cors = require('cors');
-const jwt = require("jsonwebtoken");
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-// middleware
-app.use('/users', users)
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    next();
-  });
-
-verifyToken = (req, res, next) => {
-    let token = req.headers["x-access-token"];
-  
-    if (!token) {
-      return res.status(403).send({
-        message: "No token provided!"
-      });
-    }
-  
-    jwt.verify(token, config.secret, (err, decoded) => {
-      if (err) {
-        return res.status(401).send({
-          message: "Unauthorized!"
-        });
-      }
-      req.userId = decoded.id;
-      next();
-    });
+var corsOptions = {
+  origin: "http://localhost:3000"
 };
 
-app.listen(port, function() {
-    console.log('listening on port', port)
-})
+app.use(cors(corsOptions));
 
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
 
-module.exports = app;
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// database
+const db = require("./app/models");
+const Role = db.role;
+
+db.sequelize.sync();
+// force: true will drop the table if it already exists
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Database with { force: true }');
+//   initial();
+// });
+
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the Sportics API." });
+});
+
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
+
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}

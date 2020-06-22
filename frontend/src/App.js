@@ -23,8 +23,8 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar/>
 				<Router>
+				<Navbar/>
 					<Switch>
 						<Route path='/' exact component={Homepage} />
 						<Route path='/timer'  component={IntervalTimer} />
