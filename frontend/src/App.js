@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
+import './styles/App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch, BrowserRouter as Router} from "react-router-dom";
-import Homepage from './pages/Homepage'
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
-import SignUp from './components/SignUp'
+import Homepage from './pages/Homepage';
+import Navbar from './components/Navbar';
 import React, { Component } from 'react';
 import IntervalTimer from './pages/IntervalTimer';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Account from './pages/Account';
 
 class App extends Component {
 	constructor() {
@@ -21,39 +21,20 @@ class App extends Component {
 	}
 	
 	render() {
-		if(this.state.loggedIn){
-			return (
-				<div>
-					<Navbar loggedIn={true}/>
-					<Router>
-						<Switch>
-							<Route path='/' exact render={(props) => {
-								<Homepage {...props}
-									userID={this.state.userID}
-								/>}} />
-							<Route path='/' exact render={(props) => {
-								<IntervalTimer {...props}
-									userID={this.state.userID}
-								/>}} />
-							<Route/>
-						</Switch>
-					</Router>
-				</div>
-			);
-		}else if(this.state.signUp){
-			return (
-				<div>
-					<Navbar loggedIn={false}/>
-					<SignUp/>
-				</div>
-			)
-		}else{
-			return (
-				<div>
-					<Navbar loggedIn={false}/>
-				</div>
-			)
-		}
+		return (
+			<div>
+				<Navbar/>
+				<Router>
+					<Switch>
+						<Route path='/' exact component={Homepage} />
+						<Route path='/timer'  component={IntervalTimer} />
+						<Route path='/login'  component={Login} />
+						<Route path='/register'  component={SignUp} />
+						<Route path='/account'  component={Account} />
+					</Switch>
+				</Router>
+			</div>
+		);
 	}
 }
 

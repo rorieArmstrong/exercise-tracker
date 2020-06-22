@@ -10,8 +10,8 @@ class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            length: this.props.length,
-            repetitions: this.props.repetitions,
+            length: 30,
+            repetitions: 5,
             currentTime: this.props.length,
             currentRep: 0,
             timing: false,
@@ -27,7 +27,7 @@ class Timer extends Component {
             this.timer = setInterval(() => {
                 this.setState({currentTime: this.state.currentTime-1})
                 // tick.play()
-                if(this.state.currentTime == 0){
+                if(this.state.currentTime === 0){
                     this.setState({
                         currentRep: this.state.currentRep+1,
                         currentTime: this.state.length
@@ -36,8 +36,6 @@ class Timer extends Component {
                 }
             }, 1000)
         }
-
-        this.setState({timing: false})
     }
 
     pauseTimer = () => {
@@ -64,12 +62,12 @@ class Timer extends Component {
     render() {
         return (
             <div className="timer">
-                <h3>timer: {this.state.time}</h3>
-                {this.state.timing?
-                    <button onClick={()=>{this.startTimer}} disabled={this.state.timing}>Start</button>:
-                    <button onClick={()=>{this.pauseTimer}} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
+                <h3>timer: {this.state.currentTime}</h3>
+                {!this.state.timing?
+                    <button onClick={this.startTimer} disabled={this.state.timing}>Start</button>:
+                    <button onClick={this.pauseTimer} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
                 }
-                <button onClick={()=>{this.startTimer}} disabled={!this.state.timing}>Stop</button>
+                <button onClick={this.startTimer} disabled={!this.state.timing}>Stop</button>
             </div>
         );
     }

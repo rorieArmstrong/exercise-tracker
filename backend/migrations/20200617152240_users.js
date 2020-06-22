@@ -2,7 +2,7 @@
 exports.up = function(knex) {
     return knex.schema.creatTable('users', tbl => {
         tbl.increments('userID').primary();
-        tbl.string('username').notNullable();
+        tbl.string('username').notNullable().unique();
         tbl.string('crypt_password').notNullable().unique();
         tbl.sting('salt');
         tbl.string('email');
