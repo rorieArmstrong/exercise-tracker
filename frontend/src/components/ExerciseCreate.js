@@ -31,19 +31,17 @@ class ExerciseCreate extends Component {
     render() {
         return (
             <div>
-                <form method="POST">
-                    <input type="text" />
-                    <select >
-                        <option value="Arms">Arms</option>
-                        <option value="Back">Back</option>
-                        <option value="Chest">Chest</option>
-                        <option value="Core">Core</option>                                                                        
-                        <option value="Legs">Legs</option>
-                        <option value="Shouldrs">Shoulders</option>
-                    </select>
-                    <input type="text" pattern="[0-9]*" onInput={this.handleChangeSets.bind(this)} value={this.state.set} />
-                    <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.rep} />
-                </form>
+                <input type="text" />
+                <select >
+                    <option value="Arms">Arms</option>
+                    <option value="Back">Back</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Core">Core</option>                                                                        
+                    <option value="Legs">Legs</option>
+                    <option value="Shouldrs">Shoulders</option>
+                </select>
+                <input type="text" pattern="[0-9]*" onInput={this.handleChangeSets.bind(this)} value={this.state.set} />
+                <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.rep} />
             </div>
         );
     }

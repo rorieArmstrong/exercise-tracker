@@ -40,7 +40,7 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-db.user.hasMany(db.intervalTimer);
+// db.user.hasMany(db.intervalTimer)
 
 db.ROLES = ["user", "admin", "moderator"];
 

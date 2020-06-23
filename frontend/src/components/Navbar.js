@@ -8,8 +8,6 @@ class Navbar extends Component {
         this.logOut = this.logOut.bind(this);
     
         this.state = {
-            showModeratorBoard: false,
-            showAdminBoard: false,
             currentUser: undefined
         };
     }
@@ -20,8 +18,6 @@ class Navbar extends Component {
         if (user) {
             this.setState({
                 currentUser: user,
-                showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
-                showAdminBoard: user.roles.includes("ROLE_ADMIN")
             });
         }
     }
@@ -31,7 +27,7 @@ class Navbar extends Component {
     }
     
     render() {
-        const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+        const { currentUser} = this.state;
 
         return (
         <div>
@@ -45,27 +41,17 @@ class Navbar extends Component {
                             Home
                         </Link>
                     </li>
-        
-                    {showModeratorBoard && (
-                        <li className="nav-item">
-                        <Link to={"/mod"} className="nav-link">
-                            Moderator Board
+
+                    <li className="nav-item">
+                        <Link to={"/timer"} className="nav-link">
+                            Interval Timer
                         </Link>
-                        </li>
-                    )}
-        
-                    {showAdminBoard && (
-                        <li className="nav-item">
-                        <Link to={"/admin"} className="nav-link">
-                            Admin Board
-                        </Link>
-                        </li>
-                    )}
+                    </li>
     
                     {currentUser && (
                         <li className="nav-item">
-                        <Link to={"/user"} className="nav-link">
-                            User
+                        <Link to={"/workouts"} className="nav-link">
+                            Workouts
                         </Link>
                         </li>
                     )}

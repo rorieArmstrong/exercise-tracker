@@ -1,5 +1,3 @@
-const { default: IntervalTimer } = require("../../../frontend/src/pages/IntervalTimer");
-
 module.exports = (sequelize, Sequelize) => {
     const intervalTimer = sequelize.define("interval_timers", {
         id: {
