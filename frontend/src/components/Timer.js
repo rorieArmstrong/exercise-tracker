@@ -4,7 +4,9 @@ import UIfx from 'uifx';
 import finishAudio from '../sounds/end.mp3';
 
 // const tick = new UIfx({asset: tickAudio});
-const finish = new UIfx({asset: finishAudio});
+const sound = new UIfx(finishAudio, {
+    volume: 1.0,
+});
 
 class Timer extends Component {
     constructor(props) {
@@ -28,7 +30,7 @@ class Timer extends Component {
                     this.setState({currentTime: this.state.currentTime-1})
                     // tick.play()
                     if(this.state.currentTime === 0){
-                        finish.play()
+                        sound.play()
                         this.setState({
                             currentRep: this.state.currentRep + 1,
                             currentTime: this.state.length
