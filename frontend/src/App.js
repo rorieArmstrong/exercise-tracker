@@ -30,7 +30,7 @@ class App extends Component {
 						<Route path='/timer'  component={IntervalTimer} />
 						<Route path='/login'  component={Login} />
 						<Route path='/register'  component={SignUp} />
-						<Route path='/account'  component={Account} />
+						<Route path='/profile'  component={Account} />
 					</Switch>
 				</Router>
 			</div>
