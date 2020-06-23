@@ -26,7 +26,7 @@ class App extends Component {
 				<Router>
 				<Navbar/>
 					<Switch>
-						<Route path='/' exact component={Homepage} />
+						<Route path={["/", "/home"]} exact component={Homepage} />
 						<Route path='/timer'  component={IntervalTimer} />
 						<Route path='/login'  component={Login} />
 						<Route path='/register'  component={SignUp} />

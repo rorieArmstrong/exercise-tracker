@@ -12,7 +12,7 @@ class Timer extends Component {
         this.state = {
             length: 30,
             repetitions: 5,
-            currentTime: this.props.length,
+            currentTime: 30,
             currentRep: 0,
             timing: false,
             paused: false
@@ -22,20 +22,22 @@ class Timer extends Component {
     startTimer = async () => {
         this.setState({timing: true})
         console.log("start")
-
-        while(this.state.currentRep < this.state.repetitions) {
-            this.timer = setInterval(() => {
-                this.setState({currentTime: this.state.currentTime-1})
-                // tick.play()
-                if(this.state.currentTime === 0){
-                    this.setState({
-                        currentRep: this.state.currentRep+1,
-                        currentTime: this.state.length
-                    })
-                    finish.play()
+        this.timer = 
+            setInterval(() => {
+                if(this.state.currentRep < this.state.repetitions) {
+                    this.setState({currentTime: this.state.currentTime-1})
+                    // tick.play()
+                    if(this.state.currentTime === 0){
+                        finish.play()
+                        this.setState({
+                            currentRep: this.state.currentRep + 1,
+                            currentTime: this.state.length
+                        })
+                    }
+                }else {
+                    this.resetTimer()
                 }
             }, 1000)
-        }
     }
 
     pauseTimer = () => {
@@ -45,18 +47,24 @@ class Timer extends Component {
             console.log("paused")
         }else{
             this.setState({paused: false})
-            setInterval(this.timer, 1000);
+            this.startTimer()
             console.log("resumed")
         }
     }
 
     resetTimer = () => {
+        clearInterval(this.timer)
         this.setState({
             currentRep: 0,
             currentTime: this.state.length,
-            timing: false
+            timing: false,
+            paused: false
         })
         console.log("reset")
+    }
+
+    componentDidMount() {
+
     }
 
     render() {
@@ -67,7 +75,7 @@ class Timer extends Component {
                     <button onClick={this.startTimer} disabled={this.state.timing}>Start</button>:
                     <button onClick={this.pauseTimer} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
                 }
-                <button onClick={this.startTimer} disabled={!this.state.timing}>Stop</button>
+                <button onClick={this.resetTimer} disabled={!this.state.timing}>Stop</button>
             </div>
         );
     }
