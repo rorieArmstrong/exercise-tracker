@@ -10,9 +10,9 @@ class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            length: 30,
-            repetitions: 5,
-            currentTime: 30,
+            length: this.props.length,
+            repetitions: this.props.repetitions,
+            currentTime: this.props.length,
             currentRep: 0,
             timing: false,
             paused: false
@@ -63,8 +63,13 @@ class Timer extends Component {
         console.log("reset")
     }
 
-    componentDidMount() {
-
+    componentDidUpdate(prevProps) {
+        if(this.props.length !== prevProps.length || this.props.repetitions !== prevProps.repetitions)
+            {this.setState({
+                length: this.props.length,
+                repetitions: this.props.repetitions,
+                currentTime: this.props.length,
+            })}
     }
 
     render() {
