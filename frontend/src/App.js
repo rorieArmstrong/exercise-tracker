@@ -6,8 +6,10 @@ import Navbar from './components/Navbar';
 import React, { Component } from 'react';
 import IntervalTimer from './pages/IntervalTimer';
 import Login from './pages/Login';
+import Workouts from './pages/Workouts';
 import SignUp from './pages/SignUp';
 import Account from './pages/Account';
+import Create from './pages/Create'
 
 class App extends Component {
 	constructor() {
@@ -23,14 +25,16 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar/>
 				<Router>
+				<Navbar/>
 					<Switch>
-						<Route path='/' exact component={Homepage} />
+						<Route path={["/", "/home"]} exact component={Homepage} />
 						<Route path='/timer'  component={IntervalTimer} />
 						<Route path='/login'  component={Login} />
 						<Route path='/register'  component={SignUp} />
-						<Route path='/account'  component={Account} />
+						<Route path='/profile'  component={Account} />
+						<Route path='/workouts' component={Workouts} />
+						<Route path='/create' component={Create} />
 					</Switch>
 				</Router>
 			</div>

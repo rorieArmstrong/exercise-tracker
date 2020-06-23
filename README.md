@@ -5,6 +5,14 @@ an app to track and log exercise such as gym workouts, running and other forms o
 
 ## Commands
 
+### Backend
+* npm install  
+* node server.js
+
+### Frontend
+* npm install
+* npm start
+
 ## User Stories
 
 ## Schemas
