@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import UIfx from 'uifx';
-// import tickAudio from '../sounds/tick.mp3';
-import finishAudio from '../sounds/end.mp3';
+import finishAudio from '../sounds/finish.mp3';
+import setAudio from '../sounds/set.mp3';
 
-// const tick = new UIfx({asset: tickAudio});
-const sound = new UIfx(finishAudio, {
+const sound = new UIfx(setAudio, {
     volume: 1.0,
 });
+
+const finish = new UIfx(finishAudio, {
+    volume: 1.0
+})
 
 class Timer extends Component {
     constructor(props) {
@@ -28,7 +31,6 @@ class Timer extends Component {
             setInterval(() => {
                 if(this.state.currentRep < this.state.repetitions) {
                     this.setState({currentTime: this.state.currentTime-1})
-                    // tick.play()
                     if(this.state.currentTime === 0){
                         sound.play()
                         this.setState({
@@ -38,6 +40,7 @@ class Timer extends Component {
                     }
                 }else {
                     this.resetTimer()
+                    finish.play()
                 }
             }, 1000)
     }
