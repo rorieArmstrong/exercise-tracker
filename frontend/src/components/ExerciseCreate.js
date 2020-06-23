@@ -43,7 +43,6 @@ class ExerciseCreate extends Component {
                     </select>
                     <input type="text" pattern="[0-9]*" onInput={this.handleChangeSets.bind(this)} value={this.state.set} />
                     <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.rep} />
-                    <button type="submit"></button>
                 </form>
             </div>
         );
