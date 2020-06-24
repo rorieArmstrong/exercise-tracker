@@ -11,14 +11,14 @@ module.exports = (sequelize, Sequelize) => {
 				key: 'id' // <<< Note, its a column name
 			}
         },
+        completed: {
+            type: Sequelize.INTEGER,
+        },
         name: {
             type: Sequelize.STRING
         },
-        length: {
-            type: Sequelize.INTEGER
-        },
-        intervals: {
-            type: Sequelize.INTEGER
+        exercises: {
+            type: Sequelize.TEXT,
         }
     });
   
