@@ -10,16 +10,19 @@ module.exports = function(app) {
         next();
     });
     
-    app.get(
+    app.get('/api/workouts/getone',
+        controller.workout
         //get all workouts for a given user in an array of workouts [{name:'',exercisese:[{name:'',group:'',sets:0,reps:0,weight:null},...]},...]
     )
 
-    app.get(
+    app.get('/api/workouts/getall',
         //get specific workout for a user in an array of exercises [{name:'',group:'',sets:0,reps:0,weight:null},...]
+        controller.allWorkouts
     )
 
-    app.post(
+    app.post('/api/workouts/create',
         //creates a users workout
+        controller.create
     )
 
     app.put(
