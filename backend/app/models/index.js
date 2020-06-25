@@ -40,6 +40,18 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
+db.workout.belongsToMany(db.user, {
+  through: "user_workout",
+  foreignKey: "workoutId",
+  otherKey: "username"
+});
+
+db.user.belongsToMany(db.role, {
+  through: "user_workout",
+  foreignKey: "username",
+  otherKey: "workoutId"
+});
+
 // db.user.hasMany(db.intervalTimer)
 
 db.ROLES = ["user", "admin", "moderator"];

@@ -4,8 +4,8 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             primaryKey: true
         },
-        userID: {
-			type: Sequelize.INTEGER,
+        username: {
+			type: Sequelize.STRING,
 			references: {
 				model: 'users', // <<< Note, its table's name, not object name
 				key: 'id' // <<< Note, its a column name
@@ -19,6 +19,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         exercises: {
             type: Sequelize.TEXT,
+            // use JSON.parse to convert string into object
         }
     });
   
