@@ -10,7 +10,13 @@ exports.create = (req, res) => {
         completed: 0,
         exercises: req.body.exercises
       }).then(
-
+        res.status(200).send(
+          'workout added to database'
+        )
+      ).catch(
+        error =>{
+          res.status(500).send({ message: err.message });
+        }        
       )
 }
 
@@ -57,4 +63,24 @@ exports.workout = (req, res) => {
     .catch(err => {
       res.status(500).send({ message: err.message });
     });
+}
+
+exports.update = (req, res) => {
+  Workouts.User.findOne({
+    where: {
+      id: req.body.id
+    }
+  }).then(workout => {
+    workout = req.data
+    await workout.save()
+    res.status(200).send({
+      id: workout.id,
+      completed: workout.completed,
+      name: workout.email,
+      exercises: workout.exercises
+    });
+  })
+  .catch(err => {
+    res.status(500).send({ message: err.message });
+  });
 }
