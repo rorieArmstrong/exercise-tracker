@@ -70,7 +70,7 @@ exports.update = (req, res) => {
     where: {
       id: req.body.id
     }
-  }).then(workout => {
+  }).then(async workout => {
     workout = req.data
     await workout.save()
     res.status(200).send({
