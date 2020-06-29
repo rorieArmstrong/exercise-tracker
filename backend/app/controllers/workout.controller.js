@@ -1,5 +1,5 @@
 const db = require("../models");
-const Workouts = db.workouts;
+const Workouts = db.workout;
 
 const Op = db.Sequelize.Op;
 

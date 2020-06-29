@@ -11,8 +11,8 @@ class ExerciseCreate extends Component {
         this.state = {
             name: "",
             group: "",
-            rep: null,
-            set: null,
+            rep: 10,
+            set: 3,
         }
     }
 
@@ -23,15 +23,17 @@ class ExerciseCreate extends Component {
     }
 
     handleChangeReps(evt) {
-        const reps = (evt.target.validity.valid) ? evt.target.value : this.state.reps;
+        const rep = (evt.target.validity.valid) ? evt.target.value : this.state.rep;
         
-        this.setState({ reps });
+        this.setState({ rep });
     }
     
     render() {
         return (
             <div>
-                <input type="text" />
+                <label>
+                    Exercise:  <input type="text" />
+                </label>
                 <select >
                     <option value="Arms">Arms</option>
                     <option value="Back">Back</option>
@@ -40,8 +42,8 @@ class ExerciseCreate extends Component {
                     <option value="Legs">Legs</option>
                     <option value="Shouldrs">Shoulders</option>
                 </select>
-                <input type="text" pattern="[0-9]*" onInput={this.handleChangeSets.bind(this)} value={this.state.set} />
-                <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.rep} />
+                <label>  Sets:  <input type="text" pattern="[0-9]*" onInput={this.handleChangeSets.bind(this)} value={this.state.set} /></label>
+                <label>  Reps:  <input type="text" pattern="[0-9]*" onInput={this.handleChangeReps.bind(this)} value={this.state.rep} /></label>
             </div>
         );
     }
