@@ -33,7 +33,7 @@ class Workout extends Component {
                             <h5>{exercise.weight}</h5>
                         </div>)
                     })}
-                    <button onClick={() => {this.showDetails()}}>More Info</button>
+                    <button onClick={() => {this.showDetails()}}>{this.state.showDetails? "Show Less" : "More Info"}</button>
                 </div>
             </div>
         );

@@ -25,7 +25,7 @@ module.exports = function(app) {
         controller.create
     )
 
-    app.post('/api/wprkouts/update',
+    app.put('/api/wprkouts/update',
         controller.update
         //updates a given workout
     )
