@@ -24,6 +24,8 @@ The mvp for the app was at it s core a place to create multple workouts composed
 
 ## User Stories
 
+
+
 ## Schemas
 
 ### Users
