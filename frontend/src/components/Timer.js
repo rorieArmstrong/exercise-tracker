@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UIfx from 'uifx';
 import finishAudio from '../sounds/finish.mp3';
 import setAudio from '../sounds/set.mp3';
+import '../styles/timer.css'
 
 const sound = new UIfx(setAudio, {
     volume: 1.0,
@@ -80,7 +81,8 @@ class Timer extends Component {
     render() {
         return (
             <div className="timer">
-                <h3>timer: {this.state.currentTime}</h3>
+                <h3>{this.state.currentTime}</h3>
+                
                 {!this.state.timing?
                     <button onClick={this.startTimer} disabled={this.state.timing}>Start</button>:
                     <button onClick={this.pauseTimer} disabled={!this.state.timing}>{this.state.paused?"Resume":"Pause"}</button>
