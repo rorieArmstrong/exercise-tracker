@@ -21,8 +21,8 @@ svg {
     position: absolute;
     top: 0;
     right: 0;
-    width: 40px;
-    height: 40px;
+    width: 200px;
+    height: 200px;
     transform: rotateY(-180deg) rotateZ(-90deg);
 }
   
@@ -30,7 +30,7 @@ svg circle {
     stroke-dasharray: 113px;
     stroke-dashoffset: 0px;
     stroke-linecap: round;
-    stroke-width: 2px;
+    stroke-width: 20px;
     stroke: white;
     fill: none;
 }
